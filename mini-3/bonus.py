@@ -59,7 +59,7 @@ isWin = False
 isLose = False
 shouldBreak = False
 
-while not isWin:
+while not isLose:
     os.system('clear')
     print(convertMap(map))
     prevRowPos, prevColumnPos = rowPos, columnPos
@@ -83,7 +83,6 @@ while not isWin:
         if rowPos == list_trapPos[i][0] and columnPos == list_trapPos[i][1]:
             isLose = True
             map[rowPos][columnPos] = 'P'
-            break
         
     if rowPos == keyRowPos and columnPos == keyColumnPos:
         hasKey = True
@@ -94,6 +93,8 @@ while not isWin:
         rowPos, columnPos = prevRowPos, prevColumnPos
     if (rowPos == doorRowPos and columnPos == doorColumnPos) and hasKey:
         isWin = True
+        map[rowPos][columnPos] = 'P'
+        break
         
     map[rowPos][columnPos] = 'P'
 
